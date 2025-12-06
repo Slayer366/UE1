@@ -102,15 +102,15 @@ CORE_API void ClipboardPaste( class FString& Str );
 // For showing calling stack when errors occur in major functions.
 // Meant to be enabled in release builds.
 //
-#if defined(_DEBUG) || !DO_GUARD
+//#if defined(_DEBUG) || !DO_GUARD
 	#define guard(func)			{static const char __FUNC_NAME__[]=#func;
 	#define unguard				}
 	#define unguardf(msg)		}
-#else
-	#define guard(func)			{static const char __FUNC_NAME__[]=#func; try{
-	#define unguard				}catch(char*Err){throw Err;}catch(...){appUnwindf("%s",__FUNC_NAME__); throw;}}
-	#define unguardf(msg)		}catch(char*Err){throw Err;}catch(...){appUnwindf("%s",__FUNC_NAME__); appUnwindf msg; throw;}}
-#endif
+//#else
+//	#define guard(func)			{static const char __FUNC_NAME__[]=#func; try{
+//	#define unguard				}catch(char*Err){throw Err;}catch(...){appUnwindf("%s",__FUNC_NAME__); throw;}}
+//	#define unguardf(msg)		}catch(char*Err){throw Err;}catch(...){appUnwindf("%s",__FUNC_NAME__); appUnwindf msg; throw;}}
+//#endif
 
 //
 // guardSlow/unguardfSlow/unguardSlow macros.

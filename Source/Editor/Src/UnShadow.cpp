@@ -310,7 +310,8 @@ void FMeshIlluminator::LightBspSurf( AMover* Mover, INT iSurf, INT iPoly )
 					for( INT SubU=UCounter; SubU<Index->UClamp && M; SubU++,M=M<<1 )
 					{
 						if( FDistSquared(Actor->Location,Vertex) < SqRadius )
-							if( (Prev=Level->Model->LineCheck( Hit, NULL, Actor->Location, Vertex, FVector(0,0,0), NodeFlags ))!=NULL )
+							//if( (Prev=Level->Model->LineCheck( Hit, NULL, Actor->Location, Vertex, FVector(0,0,0), NodeFlags ))!=NULL )
+							if( (Prev = Level->Model->LineCheck( Hit, Actor, Actor->Location, Vertex, FVector(0,0,0), NodeFlags )) != 0 )
 							//if( (Prev=Level->SingleLineCheck( Hit, Actor, Actor->Location, Vertex, TRACE_Movers|TRACE_Level, FVector(0,0,0), NodeFlags))!=0 )
 								{B |= M; DidHit=1;}
 						RaysTraced++;

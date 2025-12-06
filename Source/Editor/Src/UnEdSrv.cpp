@@ -1965,7 +1965,7 @@ UBOOL UEditorEngine::Exec( const char* Stream, FOutputDevice* Out )
 				{
 					ATeleporter& Teleporter = *(ATeleporter *)Level->Actors(i);
 					Results->Logf("   %s\r\n",Teleporter.URL);
-					if( appStrchr(Teleporter.URL,'//') )
+					if( appStrchr(Teleporter.URL,'/') )
 						External++;
 					else
 						Internal++;

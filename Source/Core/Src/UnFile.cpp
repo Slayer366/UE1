@@ -705,8 +705,12 @@ char* appStrncpy( char* Dest, const char* Src, INT MaxLen )
 {
 	guard(appStrncpy);
 
-	strncpy( Dest, Src, MaxLen );
-	Dest[MaxLen-1]=0;
+	//strncpy( Dest, Src, MaxLen );
+	//Dest[MaxLen-1]=0;
+	size_t srcLen = strlen(Src);
+	size_t copyLen = (srcLen < (size_t)MaxLen - 1) ? srcLen : (size_t)MaxLen - 1;
+	memcpy(Dest, Src, copyLen);
+	Dest[copyLen] = '\0';
 	return Dest;
 
 	unguard;

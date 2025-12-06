@@ -25,6 +25,7 @@
 #ifndef _GNU_SOURCE
 #define _GNU_SOURCE 1
 #endif
+
 #ifndef UNREAL_STATIC
 #include <dlfcn.h>
 #endif
@@ -1173,9 +1174,9 @@ void appError( const char* Msg )
 		debugf( NAME_Critical, Msg );
 		GObj.ShutdownAfterError();
 		strncpy( GErrorHist, Msg, ARRAY_COUNT(GErrorHist) );
-		strncat( GErrorHist, "\r\n\r\n", ARRAY_COUNT(GErrorHist) );
-		strncat( GErrorHist, LocalizeError("History"), ARRAY_COUNT(GErrorHist) );
-		strncat( GErrorHist, ": ", ARRAY_COUNT(GErrorHist) );
+		strncat( GErrorHist, "\r\n\r\n", ARRAY_COUNT(GErrorHist) - strlen(GErrorHist) - 1 );
+		strncat( GErrorHist, LocalizeError("History"), ARRAY_COUNT(GErrorHist) - strlen(GErrorHist) - 1 );
+		strncat( GErrorHist, ": ", ARRAY_COUNT(GErrorHist) - strlen(GErrorHist) - 1 );
 	}
 	throw( 1 );
 #endif
