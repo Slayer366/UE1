@@ -225,6 +225,10 @@
 #define __SDL_NOGETPROCADDR__
 #endif
 
+#if defined(__anbernic__)
+#define __ANBERNIC__ 1
+#endif
+
 #if defined(__vita__)
 #define __VITA__ 1
 #endif

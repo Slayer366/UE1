@@ -39,9 +39,17 @@ endif()
 if(BUILD_STATIC)
   set(LINK_PACKAGES ${INSTALL_TARGETS})
   list(REMOVE_ITEM LINK_PACKAGES ${PROJECT_NAME})
-  target_link_libraries(${PROJECT_NAME} -Wl,--whole-archive pthread -Wl,--no-whole-archive ${LINK_PACKAGES})
+  target_link_libraries(${PROJECT_NAME} -Wl,--whole-archive ${LINK_PACKAGES} -Wl,--no-whole-archive)
 else()
   target_link_libraries(${PROJECT_NAME} Engine Core)
+endif()
+
+if(ANBERNIC)
+  target_link_libraries(${PROJECT_NAME}
+    -Wl,--whole-archive pthread -Wl,--no-whole-archive
+    openal
+    xmp
+  )
 endif()
 
 if(VITA)

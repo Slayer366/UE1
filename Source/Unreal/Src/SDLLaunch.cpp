@@ -7,6 +7,9 @@
 #include <vitaGL.h>
 #include <unistd.h>
 #endif
+#ifdef PLATFORM_ANBERNIC
+#include <unistd.h>
+#endif
 
 #include "Engine.h"
 
